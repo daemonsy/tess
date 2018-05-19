@@ -1,4 +1,5 @@
 import Candidate from './types/candidate';
+import resolvers from './resolvers';
 
 import {
   makeExecutableSchema,
@@ -19,7 +20,7 @@ const Schema = `
 
 const schema = makeExecutableSchema({
   typeDefs: [Schema, Query, Candidate],
-  resolvers: {}
+  resolvers
 });
 
 // addMockFunctionsToSchema({ schema, mocks });
