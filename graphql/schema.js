@@ -1,7 +1,8 @@
 import Candidate from './types/candidate';
 import Job from './types/job'
 import Application from './types/application';
-import resolvers from './resolvers';
+import QueryResolver from './resolvers/query';
+import ApplicationResolver from './resolvers/application';
 
 import {
   makeExecutableSchema,
@@ -11,6 +12,7 @@ import {
 const Query = `
   type Query {
     application(id: Int!): Application
+    allApplications: [Application!]!
   }
 `
 
@@ -22,7 +24,7 @@ const Schema = `
 
 const schema = makeExecutableSchema({
   typeDefs: [Schema, Query, Candidate, Job, Application],
-  resolvers
+  resolvers: { ...QueryResolver, ...ApplicationResolver }
 });
 
 // addMockFunctionsToSchema({ schema, mocks });
