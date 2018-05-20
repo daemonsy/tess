@@ -1,4 +1,6 @@
 import Candidate from './types/candidate';
+import Job from './types/job'
+import Application from './types/application';
 import resolvers from './resolvers';
 
 import {
@@ -8,7 +10,7 @@ import {
 
 const Query = `
   type Query {
-    candidate(id: Int!): Candidate
+    application(id: Int!): Application
   }
 `
 
@@ -19,7 +21,7 @@ const Schema = `
 `
 
 const schema = makeExecutableSchema({
-  typeDefs: [Schema, Query, Candidate],
+  typeDefs: [Schema, Query, Candidate, Job, Application],
   resolvers
 });
 
