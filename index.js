@@ -9,11 +9,20 @@ import createLoaders from 'graphql/loaders/create-loaders';
 
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackConfig from './webpack.config';
+
 Model.knex(db);
 
+const compiler = webpack(webpackConfig);
 const env = process.env.NODE_ENV || 'development';
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
+
+app.use('/app', webpackMiddleware(compiler, {
+  // webpack-dev-middleware options
+}));
 
 // bodyParser is needed just for POST.
 app.use(knexLogger(db));

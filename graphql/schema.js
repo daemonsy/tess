@@ -11,7 +11,7 @@ import {
 
 const Query = `
   type Query {
-    application(id: Int!): Application
+    application(id: ID!): Application
     allApplications: [Application!]!
   }
 `
