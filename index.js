@@ -20,8 +20,8 @@ const env = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use('/app', webpackMiddleware(compiler, {
-  // webpack-dev-middleware options
+app.use([/^\/app\/(.(?!.*\.\w+$))*$/, '/app'], webpackMiddleware(compiler, {
+  historyApiFallback: true
 }));
 
 // bodyParser is needed just for POST.
