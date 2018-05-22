@@ -12,7 +12,7 @@ class FieldEntry extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: Application,
         join: {
-          from: 'fieldEntries.application_id',
+          from: 'fieldEntries.applicationId',
           to: 'applications.id'
         }
       }

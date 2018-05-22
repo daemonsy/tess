@@ -4,8 +4,8 @@ import environment from './relay/environment'
 import { graphql, QueryRenderer } from 'react-relay';
 
 const query = graphql`
-  query appQuery($id: ID!) {
-    application(id: $id) {
+  query mainQuery {
+    applications: allApplications {
       id
       candidate {
         firstName
@@ -22,19 +22,28 @@ class App extends React.Component {
       <QueryRenderer
         environment={environment}
         query={query}
-        variables={{ id: 1 }}
+        variables={{}}
         render={({ error, props }) => {
+
           if (error) {
             return <div>Error!</div>;
           }
           if (!props) {
             return <div>Loading...</div>;
           }
-          return <div>
-            <p>First Name: {props.application.candidate.firstName}</p>
-            <p>Last Name: {props.application.candidate.lastName}</p>
-            <p>Email: {props.application.candidate.email}</p>
-          </div>;
+          const { applications } = props;
+
+          return (
+            <ul>
+              {applications.map(application =>
+                <li key={application.id}>
+                  <p>First Name: {application.candidate.firstName}</p>
+                  <p>Last Name: {application.candidate.lastName}</p>
+                  <p>Email: {application.candidate.email}</p>
+                </li>
+              )}
+            </ul>
+          );
         }}
       />
     );

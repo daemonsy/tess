@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ea833c078eed59f0ae66498d8a089425
+ * @relayHash de839ba1bd89146343b525d9dd4fb7b7
  */
 
 /* eslint-disable */
@@ -9,27 +9,23 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type appQueryVariables = {|
-  id: string
-|};
-export type appQueryResponse = {|
-  +application: ?{|
+export type mainQueryVariables = {||};
+export type mainQueryResponse = {|
+  +applications: $ReadOnlyArray<{|
     +id: string,
     +candidate: {|
       +firstName: string,
       +email: string,
       +lastName: string,
     |},
-  |}
+  |}>
 |};
 */
 
 
 /*
-query appQuery(
-  $id: ID!
-) {
-  application(id: $id) {
+query mainQuery {
+  applications: allApplications {
     id
     candidate {
       firstName
@@ -42,44 +38,28 @@ query appQuery(
 */
 
 const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "id",
-    "type": "ID!",
-    "defaultValue": null
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "id",
-    "variableName": "id",
-    "type": "ID!"
-  }
-],
-v2 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "firstName",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "email",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "lastName",
@@ -89,27 +69,27 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "appQuery",
+  "name": "mainQuery",
   "id": null,
-  "text": "query appQuery(\n  $id: ID!\n) {\n  application(id: $id) {\n    id\n    candidate {\n      firstName\n      email\n      lastName\n      id\n    }\n  }\n}\n",
+  "text": "query mainQuery {\n  applications: allApplications {\n    id\n    candidate {\n      firstName\n      email\n      lastName\n      id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "appQuery",
+    "name": "mainQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
-        "name": "application",
+        "alias": "applications",
+        "name": "allApplications",
         "storageKey": null,
-        "args": v1,
+        "args": null,
         "concreteType": "Application",
-        "plural": false,
+        "plural": true,
         "selections": [
-          v2,
+          v0,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -119,9 +99,9 @@ return {
             "concreteType": "Candidate",
             "plural": false,
             "selections": [
-              v3,
-              v4,
-              v5
+              v1,
+              v2,
+              v3
             ]
           }
         ]
@@ -130,19 +110,19 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "appQuery",
-    "argumentDefinitions": v0,
+    "name": "mainQuery",
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
-        "name": "application",
+        "alias": "applications",
+        "name": "allApplications",
         "storageKey": null,
-        "args": v1,
+        "args": null,
         "concreteType": "Application",
-        "plural": false,
+        "plural": true,
         "selections": [
-          v2,
+          v0,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -152,10 +132,10 @@ return {
             "concreteType": "Candidate",
             "plural": false,
             "selections": [
+              v1,
+              v2,
               v3,
-              v4,
-              v5,
-              v2
+              v0
             ]
           }
         ]
@@ -165,5 +145,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'cd18ad04222eee1c3703f8813b536b4f';
+(node/*: any*/).hash = 'b527d5ab71440d97c1f945041099dc26';
 module.exports = node;

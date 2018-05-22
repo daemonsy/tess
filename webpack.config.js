@@ -43,7 +43,7 @@ const jsRule = {
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    app: `${entryPath}/app.js`,
+    app: `${entryPath}/main.js`,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
