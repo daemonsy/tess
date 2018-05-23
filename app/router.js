@@ -12,9 +12,10 @@ import {
   Route,
 } from 'found';
 
-
 import AppRoot from './views/app-root';
-import Applications, { query } from './views/applications';
+import Applications, { query as applicationsQuery } from './views/applications';
+import ApplicationProfile, { query as applicationProfileQuery } from './views/application-profile';
+
 
 const routeConfig = makeRouteConfig(
   <Route
@@ -23,12 +24,13 @@ const routeConfig = makeRouteConfig(
   >
     <Route
       path="/applications"
-      query={query}
+      query={applicationsQuery}
       Component={Applications}
     />
-    <Redirect
-      from="widget/:widgetId"
-      to="/widgets/:widgetId"
+    <Route
+      path="/applications/:applicationId"
+      query={applicationProfileQuery}
+      Component={ApplicationProfile}
     />
   </Route>
 );

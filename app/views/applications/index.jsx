@@ -1,33 +1,6 @@
-{/* <QueryRenderer
-  environment={environment}
-  query={query}
-  variables={{}}
-  render={({ error, props }) => {
-
-    if (error) {
-      return <div>Error!</div>;
-    }
-    if (!props) {
-      return <div>Loading...</div>;
-    }
-    const { applications } = props;
-
-    return (
-      <ul>
-        {applications.map(application =>
-          <li key={application.id}>
-            <p>First Name: {application.candidate.firstName}</p>
-            <p>Last Name: {application.candidate.lastName}</p>
-            <p>Email: {application.candidate.email}</p>
-          </li>
-        )}
-      </ul>
-    );
-  }}
-/> */}
 import React from 'react';
 import environment from '../../relay/environment';
-import { graphql, QueryRenderer } from 'react-relay';
+import { graphql } from 'react-relay';
 
 const query = graphql`
   query applicationsQuery {
@@ -44,14 +17,7 @@ const query = graphql`
 
 class Applications extends React.Component {
   render() {
-    const { relay, applications} = this.props;
-    // if (error) {
-    //   return <div>Error!</div>;
-    // }
-    // if (!props) {
-    //   return <div>Loading...</div>;
-    // }
-    // const { applications } = props;
+    const { relay, applications } = this.props;
 
     return (
       <ul>
