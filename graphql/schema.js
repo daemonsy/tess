@@ -1,8 +1,6 @@
-import Candidate from './types/candidate';
-import Job from './types/job'
-import Application from './types/application';
+import Issue from './types/issue';
 import QueryResolver from './resolvers/query';
-import ApplicationResolver from './resolvers/application';
+import IssueResolver from './resolvers/issue';
 import NodeIdentification from './resolvers/node-identification';
 
 import {
@@ -12,8 +10,7 @@ import {
 
 const Query = `
   type Query {
-    application(id: ID!): Application
-    allApplications: [Application!]!
+    allIssues: [Issue!]!,
     node(id: ID!): NodeIdentification
   }
 `
@@ -25,8 +22,8 @@ const Schema = `
 `
 
 const schema = makeExecutableSchema({
-  typeDefs: [Schema, Query, Candidate, Job, Application],
-  resolvers: { ...QueryResolver, ...ApplicationResolver, ...NodeIdentification }
+  typeDefs: [Schema, Query, Issue],
+  resolvers: { ...QueryResolver, ...IssueResolver, ...NodeIdentification }
 });
 
 // addMockFunctionsToSchema({ schema, mocks });

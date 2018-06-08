@@ -3,12 +3,9 @@ import findLoader from './find-loader';
 
 export default () => ({
   one: {
-    application: findLoader('applications'),
-    candidate: findLoader('candidates'),
-    job: findLoader('jobs')
+    issue: findLoader('issues'),
   },
 
   many: {
-    applicationFieldEntries: findLoader('fieldEntries', { id: 'applicationId', collection: true })
   }
 });

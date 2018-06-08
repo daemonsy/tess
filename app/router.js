@@ -13,9 +13,7 @@ import {
 } from 'found';
 
 import AppRoot from './views/app-root';
-import Applications, { query as applicationsQuery } from './views/applications';
-import ApplicationProfile, { query as applicationProfileQuery } from './views/application-profile';
-
+import Issues, { query as issuesQuery } from './views/issues';
 
 const routeConfig = makeRouteConfig(
   <Route
@@ -23,14 +21,9 @@ const routeConfig = makeRouteConfig(
     Component={AppRoot}
   >
     <Route
-      path="/applications"
-      query={applicationsQuery}
-      Component={Applications}
-    />
-    <Route
-      path="/applications/:applicationId"
-      query={applicationProfileQuery}
-      Component={ApplicationProfile}
+      path="/issues"
+      query={issuesQuery}
+      Component={Issues}
     />
   </Route>
 );

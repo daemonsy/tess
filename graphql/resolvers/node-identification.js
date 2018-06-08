@@ -1,10 +1,10 @@
 import { nodeDefinitions, fromGlobalId } from 'graphql-relay';
 import db from 'services/db';
 
-import Application from 'models/application';
+import Issue from 'models/issue';
 
 const WHITELISTED_MODELS = {
-  Application
+  Issue
 };
 
 const { nodeField } = nodeDefinitions(

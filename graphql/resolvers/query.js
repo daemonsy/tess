@@ -1,14 +1,10 @@
 import { nodeField } from '../resolvers/node-identification';
-import Application from 'models/application';
+import Issue from 'models/issue';
 
 export default {
   Query: {
-    application(object, args, { loaders: { one: { application } } }) {
-      return application.load(args.id)
-    },
-
-    allApplications(obj, args, context) {
-      return Application.query()
+    allIssues(obj, args, context) {
+      return Issue.query()
     },
 
     node: nodeField.resolve

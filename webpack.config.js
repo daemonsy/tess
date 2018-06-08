@@ -28,8 +28,8 @@ const jsRule = {
         ['@babel/preset-env', {
           modules: false,
           targets: {
-            browsers: 'last 5 Chrome versions',
-          },
+            browsers: 'last 5 Chrome versions'
+          }
         }]
       ],
       plugins: [
@@ -38,7 +38,7 @@ const jsRule = {
       ]
     }
   }
-}
+};
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
